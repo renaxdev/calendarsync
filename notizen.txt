@@ -1,0 +1,55 @@
+await fetch("https://bbs2wob.de/iserv/calendar/feed/calendar-multi?start=2025-02-01&end=2025-03-01", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
+        "Accept": "*/*",
+        "Accept-Language": "de,en-US;q=0.7,en;q=0.3",
+        "X-Requested-With": "XMLHttpRequest",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+
+await fetch("https://bbs2wob.de/iserv/calendar/feed/plugin?plugin=holiday&start=2025-03-01T00%3A00%3A00%2B01%3A00&end=2025-05-01T00%3A00%3A00%2B02%3A00", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
+        "Accept": "*/*",
+        "Accept-Language": "de,en-US;q=0.7,en;q=0.3",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "no-cors",
+        "Sec-Fetch-Site": "same-origin",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache",
+        "Priority": "u=4"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+
+await fetch("https://bbs2wob.de/iserv/calendar/feed/plugin?plugin=exam-plan&start=2025-03-01T00%3A00%3A00%2B01%3A00&end=2025-04-01T00%3A00%3A00%2B02%3A00", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
+        "Accept": "*/*",
+        "Accept-Language": "de,en-US;q=0.7,en;q=0.3",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+
+WICHTIGE URLS:
+https://bbs2wob.de/iserv/calendar/feed/calendar-multi?start=2025-02-01&end=2025-03-01  --> start/end tag immer ändern!!! -- PRIVATE TERMINE
+https://bbs2wob.de/iserv/calendar/feed/plugin?plugin=holiday&start=2025-03-01T00%3A00%3A00%2B01%3A00&end=2025-05-01T00%3A00%3A00%2B02%3A00 -- FEIERTAGE
+https://bbs2wob.de/iserv/calendar/feed/plugin?plugin=exam-plan&start=2025-03-01T00%3A00%3A00%2B01%3A00&end=2025-04-01T00%3A00%3A00%2B02%3A00 -- KLAUSUREN
+

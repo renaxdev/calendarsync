@@ -6,7 +6,7 @@ var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer'); 
 require('dotenv').config();
 var bcrypt = require('bcryptjs');
-const generateICS = require('./ics/generateICS.js');
+const generateICS = require('./ics/generateICS');
 
 
 const transporter = nodemailer.createTransport({

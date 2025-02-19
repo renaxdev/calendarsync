@@ -4,6 +4,7 @@ const path = require('path');
 
 
 function generateICS(uuid,  events){
+    /*
     const event = {
         start: [2021, 3, 22, 6, 30],
         duration: { hours: 6, minutes: 30 },
@@ -18,7 +19,8 @@ function generateICS(uuid,  events){
             return
         }
         fs.writeFileSync(path.join(__dirname, 'icsFiles', uuid + '.ics'), value)
-    })
+    })*/
+   
 }
 
 module.exports = generateICS;
