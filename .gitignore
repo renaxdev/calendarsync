@@ -6,3 +6,4 @@ db.sqlite
 *.sqlite
 /database
 /ics/icsFiles/*
+test.js
