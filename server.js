@@ -28,7 +28,7 @@ const iserv = new IServ(process.env.BASE_URL);
 function sendMail(uuid, email){
     var mailOptions = {
         from: 'info@notenradar.de',
-        to: 'maximilian.koerner@bbs2wob.de',
+        to: email,
         subject: 'CalendarSync: Dein Kalenderabonnement-Link',
         text: 'Hi, willkommen bei CalendarSync! \n\nUm deinen Kalender mit CalendarSync zu synchronisieren, füge folgenden Link in deinem Kalendarprogramm hinzu: \n\nhttps://calendarsync.notenradar.de/calendar/' + uuid + '.ics \n\nViel Spaß mit CalendarSync!'
       };
