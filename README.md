@@ -3,5 +3,6 @@ Synchroniesiere dein gewünschtes Kalenderprogramm mit deinem IServ-Kalendar
 
 ### .env - Setup
 ```
-SMTP_SECRET = DEINPASSWORT
+SMTP_SECRET = "DEINPASSWORT"
+BASE_URL = "https://deiniservserver.de"
 ```
