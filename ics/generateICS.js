@@ -5,6 +5,11 @@ const path = require('path');
 //TODO: Längere Termine werden nur für einen Tag angezeigt -- FIXEN
 
 function generateICS(uuid, events) {
+    if (!fs.existsSync(path.join(__dirname, 'icsFiles'))) {
+        fs.mkdirSync(path.join(__dirname, 'icsFiles'), { recursive: true });
+        console.log('Ordner "icsFiles" wurde erstellt.');
+    }
+
     const icsEvents = events.map(termin => {
         const event = {
             start: new Date(termin.start).toISOString().split('T'),
