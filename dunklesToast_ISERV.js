@@ -1,3 +1,8 @@
+/*
+Dieses Script entstand durch https://github.com/dunklesToast
+DANKE!
+*/
+
 const axios = require('axios');
 const qs = require('qs');
 require('dotenv').config();
@@ -42,6 +47,7 @@ const client = axios.create({
 
         const r1 = await client.get(final.headers.location);
         client.defaults.headers.Cookie = [...login.headers['set-cookie'], ...finalCookies, ...r1.headers['set-cookie']].join(';');
+        console.log('Login successful');
 
         const unread = await client.get('/iserv/mail/api/unread/inbox');
         console.log('Du hast ' + unread.data.count + ' ungelesene Nachrichten');

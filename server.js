@@ -8,6 +8,10 @@ require('dotenv').config();
 var bcrypt = require('bcryptjs');
 const generateICS = require('./ics/generateICS');
 
+const IServ = require('./iserv');
+
+const d = new Date();
+
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.strato.de',
@@ -18,6 +22,8 @@ const transporter = nodemailer.createTransport({
         pass: process.env.SMTP_SECRET
     }
 });
+
+const iserv = new IServ(process.env.BASE_URL);
 
 function sendMail(uuid, email){
     var mailOptions = {
@@ -65,11 +71,14 @@ app.post('/usercreation', async (req, res)=>{
             return console.error(err.message);
         }
         console.log("Daten gespeichert")
-        res.sendFile(path.join(__dirname, '/pages/angemeldet.html'));
-        generateICS(uuid);
-        sendMail(uuid, email);
-
     })
+    res.sendFile(path.join(__dirname, '/pages/angemeldet.html'));
+    sendMail(uuid, email);
+    await iserv.login(email.split('@')[0], password);
+    const events = await iserv.getCalendarEntries(`${d.getFullYear()}-01-01`, `${d.getFullYear()}-12-31`, email.split('@')[0]);
+    console.log(events);
+    generateICS(uuid, events);
+
 });
 
 app.get('/calendar/:uuid', (req, res) => {
@@ -77,5 +86,5 @@ app.get('/calendar/:uuid', (req, res) => {
     res.sendFile(path.join(__dirname, '/ics/icsFiles/' + uuid));
 });
 
-app.listen(port);
-console.log('Server started at http://localhost:' + port);
+app.listen(port, '0.0.0.0');
+console.log('Server started - PORT:' + port);

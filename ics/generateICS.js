@@ -2,25 +2,40 @@ const ics = require('ics');
 const fs = require('fs');
 const path = require('path');
 
+//TODO: Längere Termine werden nur für einen Tag angezeigt -- FIXEN
 
-function generateICS(uuid,  events){
-    /*
-    const event = {
-        start: [2021, 3, 22, 6, 30],
-        duration: { hours: 6, minutes: 30 },
-        title: 'Testevent',
-        description: 'This is a test event',
-        location: 'Braunschweig',
-        url: 'https://www.google.com'
-    }
-    ics.createEvent(event, (error, value) => {
+function generateICS(uuid, events) {
+    const icsEvents = events.map(termin => {
+        const event = {
+            start: new Date(termin.start).toISOString().split('T'),
+            end: new Date(termin.end).toISOString().split('T'),
+            title: termin.title,
+            description: termin.when,
+            allDay: termin.allDay,
+        };
+
+        return {
+            title: event.title,
+            start: event.start[0].split('-').map(num => parseInt(num)),
+            duration: { 
+                hours: new Date(termin.end).getHours() - new Date(termin.start).getHours(),
+                minutes: new Date(termin.end).getMinutes() - new Date(termin.start).getMinutes()
+            },
+            description: event.description,
+        };
+    });
+
+    ics.createEvents(icsEvents, (error, value) => {
         if (error) {
-            console.log(error)
-            return
+            console.log('Fehler beim Erstellen der ICS-Datei:', error);
+            return;
         }
-        fs.writeFileSync(path.join(__dirname, 'icsFiles', uuid + '.ics'), value)
-    })*/
-   
+
+        const filePath = path.join(__dirname, 'icsFiles', `${uuid}.ics`);
+        fs.writeFileSync(filePath, value);
+        console.log(`ICS-Datei gespeichert: ${filePath}`);
+    });
 }
+
 
 module.exports = generateICS;
