@@ -1,5 +1,5 @@
 # CalendarSync by AvenirX
-Synchroniesiere dein gewünschtes Kalenderprogramm mit deinem IServ-Kalendar
+Synchroniesiere dein gewünschtes Kalendarprogramm mit deinem IServ-Kalendar
 
 ### .env - Setup
 ```
